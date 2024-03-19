@@ -1,0 +1,75 @@
+//Name: Area.cpp
+//Project: CMSC 202 Project 4, Fall 2023
+//Author:  Faheed Sadique
+//Date:    11/4/23
+//Desc: This file contains code details for the Area.cpp
+
+#include "Area.h"
+#include <iostream>
+using namespace std;
+
+Area::Area(int id, string name, string desc, int north, int east, int south, int west)
+  : m_ID(id), m_name(name), m_desc(desc), north(north), east(east), south(south), west(west) {
+}
+
+int m_ID; //Unique int for area number
+string m_name; //Name of area
+string m_desc; //Description of area
+int m_direction[4]; //Array holding area to north, east, south, west (-1 if no exit)
+int north;
+int east;
+int south;
+int west;
+
+
+// GetName function
+string Area::GetName() {
+  return m_name;
+}
+
+//GetID function
+int Area::GetID() {
+  return m_ID;
+}
+
+// GetDesc function
+string Area::GetDesc() {
+  return m_desc;
+}
+
+// CheckDirection function
+int Area::CheckDirection(char myDirection) {
+  // Check the specified direction and return the ID of the area in that direction
+  switch (tolower(myDirection)) {
+  case 'n':
+    return north;
+  case 'e':
+    return east;
+  case 's':
+    return south;
+  case 'w':
+    return west;
+  default:
+    
+    return -1;
+  }
+}
+
+// PrintArea function
+void Area::PrintArea() {
+  // Output area details and possible exits
+  cout << "Area Name: " << m_name << endl;
+  cout << "Area ID: " << m_ID << endl;
+  cout << "Area Description: " << m_desc << endl;
+
+  // Output possible exits
+  cout << "Possible Exits:";
+  if (north != -1) cout << " North";
+  if (east != -1) cout << " East";
+  if (south != -1) cout << " South";
+  if (west != -1) cout << " West";
+  cout << endl;
+}
+int main(){
+  return 0;
+}
